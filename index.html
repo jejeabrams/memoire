@@ -436,6 +436,61 @@
             background: #667eea;
             border-radius: 2px;
         }
+
+        /* Treemap styles for mobile */
+        .treemap-container {
+            display: none;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 15px;
+            height: 300px;
+        }
+
+        .treemap-item {
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            min-height: 60px;
+        }
+
+        .treemap-label {
+            padding: 10px;
+        }
+
+        .treemap-percent {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .treemap-title {
+            font-size: 0.9em;
+            line-height: 1.2;
+        }
+
+        .desktop-chart {
+            display: flex;
+        }
+
+        .mobile-chart {
+            display: none;
+        }
+
+        /* Show treemap on mobile, hide bar chart */
+        @media (max-width: 768px) {
+            .desktop-chart {
+                display: none;
+            }
+            
+            .mobile-chart {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
@@ -827,7 +882,7 @@
             <h2>⚠️ Freins persistants et défis organisationnels</h2>
             
             <div class="chart-container">
-                <div class="bar-chart">
+                <div class="bar-chart desktop-chart">
                     <div class="bar" style="height: 67%; background: linear-gradient(to top, #e74c3c, #c0392b);">
                         <div class="bar-percentage">67%</div>
                         <div class="bar-title">Manque compétences</div>
@@ -843,6 +898,33 @@
                     <div class="bar" style="height: 42%; background: linear-gradient(to top, #1abc9c, #16a085);">
                         <div class="bar-percentage">42%</div>
                         <div class="bar-title">Résistance équipes</div>
+                    </div>
+                </div>
+
+                <div class="treemap-container mobile-chart">
+                    <div class="treemap-item" style="flex: 67; background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">67%</div>
+                            <div class="treemap-title">Manque compétences</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 54; background: linear-gradient(135deg, #f39c12, #e67e22);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">54%</div>
+                            <div class="treemap-title">Contraintes budget</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 48; background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">48%</div>
+                            <div class="treemap-title">Complexité intégration</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 42; background: linear-gradient(135deg, #1abc9c, #16a085);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">42%</div>
+                            <div class="treemap-title">Résistance équipes</div>
+                        </div>
                     </div>
                 </div>
             </div>
