@@ -511,6 +511,33 @@
             opacity: 0.9;
         }
 
+        /* Keyboard hint message for desktop */
+        .keyboard-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            z-index: 2000;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            display: none;
+        }
+
+        .keyboard-hint.show {
+            opacity: 0.9;
+        }
+
         /* Budget cards layout */
         .budget-cards {
             display: grid;
@@ -579,6 +606,11 @@
     <!-- Swipe hint for mobile -->
     <div class="swipe-hint" id="swipeHint">
         👆 Swipez horizontalement pour naviguer entre les slides
+    </div>
+
+    <!-- Keyboard hint for desktop -->
+    <div class="keyboard-hint" id="keyboardHint">
+        ⌨️ Utilisez les touches fléchées ← → pour naviguer entre les slides
     </div>
 
     <div class="presentation">
@@ -1657,11 +1689,32 @@
             }
         }
 
+        // Show keyboard hint on desktop devices
+        function showKeyboardHint() {
+            // Only show on desktop devices
+            if (window.innerWidth > 768) {
+                const keyboardHint = document.getElementById('keyboardHint');
+                keyboardHint.style.display = 'block';
+                keyboardHint.classList.add('show');
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    keyboardHint.classList.remove('show');
+                    setTimeout(() => {
+                        keyboardHint.style.display = 'none';
+                    }, 500);
+                }, 3000);
+            }
+        }
+
         // Initialize
         showSlide(0);
         
-        // Show swipe hint after page load
-        setTimeout(showSwipeHint, 1000);
+        // Show appropriate hint after page load
+        setTimeout(() => {
+            showSwipeHint(); // Mobile
+            showKeyboardHint(); // Desktop
+        }, 1000);
     </script>
 </body>
 </html>
