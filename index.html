@@ -263,22 +263,26 @@
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 12px 16px;
-            border-radius: 25px;
+            padding: 14px 20px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            transition: transform 0.2s ease;
-            font-size: clamp(0.8em, 1.5vw, 1em);
-            max-width: 150px;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9em, 1.8vw, 1.1em);
+            max-width: 160px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .nav-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
         .nav-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
+            transform: none;
         }
 
         .slide-counter {
@@ -481,6 +485,32 @@
             display: none;
         }
 
+        /* Swipe hint message for mobile */
+        .swipe-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            z-index: 2000;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .swipe-hint.show {
+            opacity: 0.9;
+        }
+
         /* Show treemap on mobile, hide bar chart */
         @media (max-width: 768px) {
             .desktop-chart {
@@ -490,12 +520,23 @@
             .mobile-chart {
                 display: flex;
             }
+
+            .nav-btn {
+                padding: 16px 22px;
+                font-size: 1em;
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            }
         }
     </style>
 </head>
 <body>
     <div class="slide-counter">
         <span id="current-slide">1</span> / <span id="total-slides">20</span>
+    </div>
+
+    <!-- Swipe hint for mobile -->
+    <div class="swipe-hint" id="swipeHint">
+        👆 Swipez horizontalement pour naviguer entre les slides
     </div>
 
     <div class="presentation">
@@ -781,7 +822,7 @@
             </div>
                 
             <div class="chart-container">
-                <div class="bar-chart">
+                <div class="bar-chart desktop-chart">
                     <div class="bar" style="height: 74%;">
                         <div class="bar-percentage">74%</div>
                         <div class="bar-title">CRM</div>
@@ -805,6 +846,45 @@
                     <div class="bar" style="height: 39%;">
                         <div class="bar-percentage">39%</div>
                         <div class="bar-title">Scoring leads</div>
+                    </div>
+                </div>
+
+                <div class="treemap-container mobile-chart">
+                    <div class="treemap-item" style="flex: 74; background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">74%</div>
+                            <div class="treemap-title">CRM</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 68; background: linear-gradient(135deg, #00b894, #00a085);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">68%</div>
+                            <div class="treemap-title">Gestion annonces</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 52; background: linear-gradient(135deg, #fdcb6e, #f39c12);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">52%</div>
+                            <div class="treemap-title">Analyse web</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 48; background: linear-gradient(135deg, #e17055, #d63031);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">48%</div>
+                            <div class="treemap-title">Marketing automation</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 45; background: linear-gradient(135deg, #6c5ce7, #5f3dc4);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">45%</div>
+                            <div class="treemap-title">Visites virtuelles</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 39; background: linear-gradient(135deg, #a29bfe, #74b9ff);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">39%</div>
+                            <div class="treemap-title">Scoring leads</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1496,8 +1576,25 @@
             if (e.key === 'ArrowLeft') changeSlide(-1);
         });
 
+        // Show swipe hint on mobile devices
+        function showSwipeHint() {
+            // Only show on mobile devices
+            if (window.innerWidth <= 768) {
+                const swipeHint = document.getElementById('swipeHint');
+                swipeHint.classList.add('show');
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    swipeHint.classList.remove('show');
+                }, 3000);
+            }
+        }
+
         // Initialize
         showSlide(0);
+        
+        // Show swipe hint after page load
+        setTimeout(showSwipeHint, 1000);
     </script>
 </body>
 </html>
