@@ -411,6 +411,15 @@
             touch-action: pan-y;
         }
 
+        /* Prevent accidental clicks on navigation when scrolling */
+        .navigation {
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            touch-action: manipulation;
+        }
+
         /* Custom scrollbar */
         .slide::-webkit-scrollbar {
             width: 4px;
@@ -1347,25 +1356,54 @@
         // Touch gestures for mobile
         let touchStartX = 0;
         let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isScrolling = false;
 
         function handleGesture() {
-            if (touchEndX < touchStartX - 50) {
-                // Swipe left - next slide
-                changeSlide(1);
-            }
-            if (touchEndX > touchStartX + 50) {
-                // Swipe right - previous slide  
-                changeSlide(-1);
+            // Only process horizontal swipes if not scrolling vertically
+            if (!isScrolling) {
+                const horizontalDiff = Math.abs(touchEndX - touchStartX);
+                const verticalDiff = Math.abs(touchEndY - touchStartY);
+                
+                // Only trigger slide change if horizontal movement is greater than vertical
+                if (horizontalDiff > verticalDiff && horizontalDiff > 50) {
+                    if (touchEndX < touchStartX - 50) {
+                        // Swipe left - next slide
+                        changeSlide(1);
+                    }
+                    if (touchEndX > touchStartX + 50) {
+                        // Swipe right - previous slide  
+                        changeSlide(-1);
+                    }
+                }
             }
         }
 
         document.addEventListener('touchstart', function(e) {
             touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            isScrolling = false;
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            const currentX = e.changedTouches[0].screenX;
+            const currentY = e.changedTouches[0].screenY;
+            const horizontalDiff = Math.abs(currentX - touchStartX);
+            const verticalDiff = Math.abs(currentY - touchStartY);
+            
+            // Detect if user is scrolling vertically
+            if (verticalDiff > horizontalDiff && verticalDiff > 10) {
+                isScrolling = true;
+            }
         });
 
         document.addEventListener('touchend', function(e) {
             touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
+            touchEndY = e.changedTouches[0].screenY;
+            
+            // Small delay to ensure gesture is complete
+            setTimeout(handleGesture, 50);
         });
 
         // Keyboard navigation
