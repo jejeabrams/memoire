@@ -196,11 +196,8 @@
         }
 
         .bar-title {
-            font-size: clamp(0.6em, 1.1vw, 0.8em);
-            line-height: 1.1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
+            font-size: clamp(0.7em, 1.2vw, 0.9em);
+            line-height: 1.2;
         }
 
         .key-findings {
@@ -376,13 +373,8 @@
             }
             
             .bar {
-                min-width: 100px;
+                min-width: 90px;
                 flex-shrink: 0;
-            }
-            
-            .bar-title {
-                font-size: 0.7em;
-                line-height: 1.0;
             }
             
             .stat-card {
@@ -1186,18 +1178,40 @@
 
             <div class="chart-container">
                 <h3 style="text-align: center; margin-bottom: 20px;">🎯 Préférences par génération</h3>
-                <div class="bar-chart" style="height: 220px; padding-bottom: 40px;">
+                
+                <div class="treemap-container desktop-chart">
+                    <div class="treemap-item" style="flex: 85; background: linear-gradient(135deg, #00b894, #00a085);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">85%</div>
+                            <div class="treemap-title">< 35 ans pro-digital</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 65; background: linear-gradient(135deg, #fdcb6e, #f39c12);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">65%</div>
+                            <div class="treemap-title">35-50 ans mitigé</div>
+                        </div>
+                    </div>
+                    <div class="treemap-item" style="flex: 35; background: linear-gradient(135deg, #e17055, #d63031);">
+                        <div class="treemap-label">
+                            <div class="treemap-percent">35%</div>
+                            <div class="treemap-title">> 50 ans réticents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bar-chart mobile-chart" style="height: 220px; padding-bottom: 40px;">
                     <div class="bar" style="height: 85%; background: linear-gradient(to top, #00b894, #00a085);">
                         <div class="bar-percentage">85%</div>
-                        <div class="bar-title">< 35 ans<br>Pro-digital</div>
+                        <div class="bar-title">< 35 ans<br>pro-digital</div>
                     </div>
                     <div class="bar" style="height: 65%; background: linear-gradient(to top, #fdcb6e, #f39c12);">
                         <div class="bar-percentage">65%</div>
-                        <div class="bar-title">35-50 ans<br>Mitigé</div>
+                        <div class="bar-title">35-50 ans<br>mitigé</div>
                     </div>
                     <div class="bar" style="height: 35%; background: linear-gradient(to top, #e17055, #d63031);">
                         <div class="bar-percentage">35%</div>
-                        <div class="bar-title">+ 50 ans<br>Réticents</div>
+                        <div class="bar-title">> 50 ans<br>réticents</div>
                     </div>
                 </div>
             </div>
