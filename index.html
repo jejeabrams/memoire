@@ -44,24 +44,24 @@
         }
 
         h1 {
-            font-size: clamp(1.5em, 3.5vw, 2.2em);
+            font-size: clamp(1.3em, 4vh, 2.5em);
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: clamp(8px, 1vh, 15px);
             text-align: center;
             background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         h2 {
-            font-size: clamp(1.2em, 2.5vw, 1.7em);
+            font-size: clamp(1.1em, 3vh, 2em);
             color: #34495e;
-            margin-bottom: 5px;
+            margin-bottom: clamp(4px, 0.8vh, 10px);
             text-align: center;
             position: relative;
-            line-height: 1.1;
+            line-height: 1.05;
             flex-shrink: 0;
         }
 
@@ -78,12 +78,12 @@
         }
 
         h3 {
-            font-size: clamp(0.95em, 2vw, 1.2em);
+            font-size: clamp(0.9em, 2.2vh, 1.3em);
             color: #2980b9;
-            margin: 10px 0 8px;
+            margin: clamp(6px, 1vh, 12px) 0 clamp(4px, 0.8vh, 10px);
             padding-left: 12px;
             border-left: 3px solid #3498db;
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         .content-grid {
@@ -98,15 +98,15 @@
 
         .content-box {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 15px;
+            padding: clamp(10px, 2vh, 18px);
             border-radius: 8px;
             border-left: 3px solid #667eea;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            font-size: 0.88em;
-            min-height: 120px;
+            font-size: clamp(0.8em, 1.8vh, 1em);
+            min-height: clamp(100px, 15vh, 140px);
         }
 
         .stat-card {
@@ -129,16 +129,16 @@
         }
 
         .stat-number {
-            font-size: clamp(1.5em, 4vw, 2.2em);
+            font-size: clamp(1.3em, 5vh, 2.8em);
             font-weight: bold;
-            margin-bottom: 6px;
-            line-height: 1;
+            margin-bottom: clamp(4px, 0.8vh, 10px);
+            line-height: 0.95;
         }
 
         .stat-label {
-            font-size: clamp(0.75em, 1.5vw, 0.9em);
+            font-size: clamp(0.7em, 1.6vh, 1em);
             opacity: 0.9;
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         .methodology-flow {
@@ -155,8 +155,8 @@
             background: white;
             border: 2px solid #667eea;
             border-radius: 50%;
-            width: clamp(65px, 11vw, 85px);
-            height: clamp(65px, 11vw, 85px);
+            width: clamp(60px, 12vh, 90px);
+            height: clamp(60px, 12vh, 90px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -164,8 +164,8 @@
             text-align: center;
             position: relative;
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            font-size: clamp(0.58em, 1.1vw, 0.75em);
-            line-height: 1.05;
+            font-size: clamp(0.55em, 1.3vh, 0.85em);
+            line-height: 1.02;
         }
 
         .chart-container {
@@ -207,24 +207,24 @@
         }
 
         .bar-percentage {
-            font-size: clamp(1em, 2vw, 1.4em);
+            font-size: clamp(0.9em, 2.5vh, 1.6em);
             font-weight: bold;
-            margin-bottom: 4px;
-            line-height: 1;
+            margin-bottom: clamp(3px, 0.5vh, 6px);
+            line-height: 0.95;
         }
 
         .bar-title {
-            font-size: clamp(0.6em, 1vw, 0.8em);
-            line-height: 1.1;
+            font-size: clamp(0.55em, 1.2vh, 0.9em);
+            line-height: 1.05;
         }
 
         .key-findings {
             background: linear-gradient(135deg, #e8f5e8, #d4edd4);
-            padding: 12px;
+            padding: clamp(10px, 2vh, 16px);
             border-radius: 10px;
             border-left: 5px solid #27ae60;
-            margin: 5px 0;
-            font-size: 0.88em;
+            margin: clamp(4px, 0.8vh, 8px) 0;
+            font-size: clamp(0.8em, 1.8vh, 1em);
             flex-shrink: 0;
         }
 
@@ -235,11 +235,11 @@
 
         .recommendation-box {
             background: linear-gradient(135deg, #fff3cd, #fde68a);
-            padding: 15px;
+            padding: clamp(12px, 2vh, 18px);
             border-radius: 8px;
             border-left: 3px solid #f59e0b;
-            margin: 5px 0;
-            font-size: 0.88em;
+            margin: clamp(4px, 0.8vh, 8px) 0;
+            font-size: clamp(0.8em, 1.8vh, 1em);
             flex: 1;
         }
 
@@ -256,11 +256,11 @@
         }
 
         li {
-            padding: 3px 0;
+            padding: clamp(2px, 0.4vh, 5px) 0;
             position: relative;
             padding-left: 16px;
-            font-size: clamp(0.78em, 1.4vw, 0.88em);
-            line-height: 1.25;
+            font-size: clamp(0.75em, 1.8vh, 1em);
+            line-height: 1.2;
         }
 
         li:before {
@@ -343,24 +343,24 @@
 
         .author-info {
             background: rgba(255,255,255,0.1);
-            padding: 20px;
+            padding: clamp(15px, 3vh, 25px);
             border-radius: 12px;
-            margin: 20px 0;
+            margin: clamp(15px, 3vh, 25px) 0;
             backdrop-filter: blur(10px);
             max-width: 90%;
-            font-size: 0.9em;
+            font-size: clamp(0.85em, 2vh, 1em);
         }
 
         .problem-statement {
             background: linear-gradient(135deg, #ffeaa7, #fab1a0);
-            padding: 12px;
+            padding: clamp(10px, 2vh, 16px);
             border-radius: 10px;
-            margin: 5px 0;
+            margin: clamp(4px, 0.8vh, 8px) 0;
             text-align: center;
-            font-size: clamp(0.88em, 1.9vw, 1.05em);
+            font-size: clamp(0.85em, 2.2vh, 1.2em);
             font-weight: bold;
             color: #2d3436;
-            line-height: 1.25;
+            line-height: 1.2;
             flex-shrink: 0;
         }
 
@@ -392,7 +392,7 @@
         @media (max-width: 768px) {
             .slide {
                 margin: 5px;
-                padding: 10px 10px 90px 10px;
+                padding: clamp(8px, 2vh, 12px) clamp(8px, 2vh, 12px) clamp(80px, 12vh, 100px) clamp(8px, 2vh, 12px);
                 border-radius: 8px;
                 height: calc(100vh - 10px);
             }
@@ -409,9 +409,9 @@
             }
             
             .flow-step {
-                width: 70px;
-                height: 70px;
-                font-size: 0.6em;
+                width: clamp(60px, 8vh, 80px);
+                height: clamp(60px, 8vh, 80px);
+                font-size: clamp(0.55em, 1vh, 0.7em);
             }
             
             .navigation {
@@ -422,20 +422,20 @@
             .bar-chart {
                 flex-direction: row;
                 overflow-x: hidden;
-                padding-bottom: 8px;
-                height: 100px;
+                padding-bottom: clamp(6px, 1vh, 10px);
+                height: clamp(80px, 12vh, 120px);
             }
             
             .bar {
-                min-width: 45px;
+                min-width: clamp(40px, 6vw, 55px);
                 flex-shrink: 1;
-                font-size: 0.75em;
-                padding: 6px 3px;
+                font-size: clamp(0.65em, 1.2vh, 0.8em);
+                padding: clamp(4px, 0.8vh, 8px) clamp(2px, 0.4vh, 5px);
             }
             
             .stat-card {
-                min-height: 65px;
-                padding: 8px;
+                min-height: clamp(60px, 10vh, 80px);
+                padding: clamp(6px, 1.2vh, 10px);
             }
             
             h3 {
@@ -443,20 +443,20 @@
             }
             
             .content-box, .key-findings, .recommendation-box {
-                padding: 10px;
-                font-size: 0.82em;
+                padding: clamp(8px, 1.5vh, 12px);
+                font-size: clamp(0.75em, 1.6vh, 0.9em);
             }
         }
 
         @media (max-width: 480px) {
             .slide {
                 margin: 3px;
-                padding: 8px 8px 100px 8px;
+                padding: clamp(6px, 1.5vh, 10px) clamp(6px, 1.5vh, 10px) clamp(90px, 15vh, 110px) clamp(6px, 1.5vh, 10px);
             }
             
             .author-info {
-                padding: 12px;
-                font-size: 0.8em;
+                padding: clamp(10px, 2vh, 15px);
+                font-size: clamp(0.75em, 1.8vh, 0.9em);
             }
             
             .methodology-flow {
@@ -464,10 +464,10 @@
             }
             
             .flow-step {
-                width: 60px;
-                height: 60px;
+                width: clamp(50px, 7vh, 70px);
+                height: clamp(50px, 7vh, 70px);
                 border-radius: 12px;
-                font-size: 0.55em;
+                font-size: clamp(0.5em, 0.9vh, 0.65em);
             }
         }
 
@@ -528,15 +528,15 @@
         }
 
         .treemap-percent {
-            font-size: 1.2em;
+            font-size: clamp(1em, 2.5vh, 1.4em);
             font-weight: bold;
-            margin-bottom: 3px;
-            line-height: 1;
+            margin-bottom: clamp(2px, 0.4vh, 5px);
+            line-height: 0.95;
         }
 
         .treemap-title {
-            font-size: 0.75em;
-            line-height: 1.1;
+            font-size: clamp(0.65em, 1.3vh, 0.85em);
+            line-height: 1.05;
         }
 
         .desktop-chart {
@@ -658,7 +658,8 @@
                 grid-row: auto;
                 justify-self: stretch;
                 max-width: none;
-                min-height: 60px;
+                min-height: clamp(55px, 8vh, 75px);
+                font-size: clamp(0.8em, 1.5vh, 0.95em);
             }
         }
     </style>
